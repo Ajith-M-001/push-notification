@@ -1,9 +1,10 @@
 import express from "express";
-import { sendFirebaseNotification } from "../controllers/firebaseController.js";
+import { sendFirebaseNotification, sendMultipleFirebaseNotification } from "../controllers/firebaseController.js";
 
 const router = express.Router();
 
-router.post("/send-notification", sendFirebaseNotification )
+router.post("/send-notification", sendFirebaseNotification)
+router.post("/send-multiple-notification", sendMultipleFirebaseNotification)
 
 
 export default router;

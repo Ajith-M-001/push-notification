@@ -17,4 +17,21 @@ const sendFirebaseNotification = async (req, res) => {
   }
 };
 
-export { sendFirebaseNotification };
+
+const sendMultipleFirebaseNotification = async (req, res) => {
+  const { title, body, tokens } = req.body;
+  try {
+    const response = await NotificationService.sendMultipleNotification(
+      title,
+      body,
+      tokens
+    );
+    res
+      .status(200)
+      .json({ message: "Notification sent successfully", status: true });
+  } catch (error) {
+    res.status(500).json({ error: error.message, status: false });
+  }
+};
+
+export { sendFirebaseNotification , sendMultipleFirebaseNotification };
